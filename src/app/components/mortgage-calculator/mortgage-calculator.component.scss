@@ -16,10 +16,24 @@
         padding: 20px;
         background-color: #ffffff;
         color: #8c979b;
+        position: relative;
 
         h1 {
             color: #133040;
             font-size: 24px;
+        }
+
+        #reset-button {
+            cursor: pointer;
+            text-decoration: underline;
+            position: absolute;
+            top: 22px;
+            right: 20px;
+
+            @media only screen and (max-width: 767px) {
+                top: 58px;
+                right: inherit;
+            }
         }
 
         .form-check {

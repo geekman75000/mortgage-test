@@ -9,11 +9,11 @@
                         <div class="col-md-6 col-sm-12">
 
                             <div id="form-container">
-                                <h1 class="mb-4">Mortgage Calculator</h1>
-
-
+                                <h1 class="mb-5">Mortgage Calculator</h1>
 
                                 <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()" novalidate>
+                                    <div id="reset-button" (click)="onReset()">Clear all</div>
+
                                     <!-- Mortgage Amount -->
                                     <div class="mb-3">
                                         <label for="mortgageAmount" class="form-label">Mortgage Amount</label>

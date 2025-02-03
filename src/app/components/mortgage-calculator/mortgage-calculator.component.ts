@@ -28,6 +28,10 @@ export class MortgageCalculatorComponent {
         }
     }
 
+    onReset() {
+        this.mortgageForm.reset();
+    }
+
     get f() {
         return this.mortgageForm.controls;
     }
