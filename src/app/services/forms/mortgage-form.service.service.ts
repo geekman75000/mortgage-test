@@ -18,9 +18,9 @@ export class MortgageFormServiceService {
 
     private _createForm() {
         return this._fb.group({
-            mortgageAmount: ['', Validators.required],
-            mortgageTerm: ['', Validators.required],
-            interestRate: ['', Validators.required],
+            mortgageAmount: [120000, Validators.required],
+            mortgageTerm: [9, Validators.required],
+            interestRate: [0.6, Validators.required],
             mortgageType: ['Repayment', Validators.required]
         });
     }

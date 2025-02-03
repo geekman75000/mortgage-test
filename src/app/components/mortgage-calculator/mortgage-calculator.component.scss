@@ -2,22 +2,104 @@
     background-color: #ffffff;
     border-radius: 30px;
     overflow: auto;
-}
 
-#form-container,
-#results {
-    height: 100%;
-}
+    @media only screen and (max-width: 767px) {
+        border-radius: 0;
+    }
 
-#form-container {
-    padding: 20px;
-    background-color: #ffffff;
-    // color: #133040;
-    color: #8c979b;
-}
+    #form-container,
+    #results {
+        height: 100%;
+    }
 
-#results {
-    background-color: #133040;
-    color: #ffffff;
-    border-bottom-left-radius: 100px;
+    #form-container {
+        padding: 20px;
+        background-color: #ffffff;
+        color: #8c979b;
+
+        h1 {
+            color: #133040;
+            font-size: 24px;
+        }
+
+        .form-check {
+            // border: 1px solid #000000;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            padding: 10px 10px 10px 35px;
+            color: #133040;
+            font-weight: bold;
+            border-radius: 8px;
+
+            &:last-child {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    #results-container {
+        background-color: #133040;
+        color: #ffffff;
+        border-bottom-left-radius: 100px;
+
+        @media only screen and (max-width: 767px) {
+            border-bottom-left-radius: 0;
+        }
+
+        #results {
+            text-align: center;
+            padding: 30px;
+
+            h2 {
+                color: #ffffff;
+                font-size: 24px;
+            }
+
+            .description {
+                color: #a4cee1;
+            }
+
+            #with-results {
+                .card {
+                    text-align: left;
+                    background-color: #0b1f2b;
+                    border-top: 5px solid #d9db30;
+
+                    #monthy-repayment-value {
+                        font-size: 60px;
+                        font-weight: bold;
+                        color: #d9db30;
+                    }
+
+                    #total-repayment-value {
+                        font-size: 26px;
+                        font-weight: bold;
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            #without-results {
+                img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+
+    #submit-button {
+        background-color: #d9db30;
+        font-weight: bold;
+        padding: 10px 30px;
+        border-radius: 25px;
+
+        * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        img {
+            height: 20px;
+            margin-right: 8px;
+        }
+    }
 }

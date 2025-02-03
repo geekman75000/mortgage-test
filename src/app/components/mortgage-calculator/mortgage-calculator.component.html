@@ -17,20 +17,24 @@
                                     <!-- Mortgage Amount -->
                                     <div class="mb-3">
                                         <label for="mortgageAmount" class="form-label">Mortgage Amount</label>
-                                        <input id="mortgageAmount" type="number" class="form-control"
-                                            formControlName="mortgageAmount" placeholder="£"
-                                            [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}" />
 
+                                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}">£</span>
+                                            <input id="mortgageAmount" type="number" class="form-control"
+                                                formControlName="mortgageAmount"
+                                                [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}" />
 
-                                        @if(f['mortgageAmount'].invalid && isFormSubmitted) {
-                                        <div class="invalid-feedback">
-                                            @if(f['mortgageAmount'].errors?.['required']) {
-                                            <span>
-                                                This field is required
-                                            </span>
+                                            @if(f['mortgageAmount'].invalid && isFormSubmitted) {
+                                            <div class="invalid-feedback">
+                                                @if(f['mortgageAmount'].errors?.['required']) {
+                                                <span>
+                                                    This field is required
+                                                </span>
+                                                }
+                                            </div>
                                             }
                                         </div>
-                                        }
                                     </div>
 
                                     <!-- Mortgage Term -->
@@ -38,39 +42,47 @@
                                         <label for="mortgageTerm" class="form-label">
                                             Mortgage Term
                                         </label>
-                                        <input id="mortgageTerm" type="number" class="form-control"
-                                            formControlName="mortgageTerm" placeholder="années"
-                                            [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}" />
 
+                                        <div class="input-group">
+                                            <input id="mortgageTerm" type="number" class="form-control"
+                                                formControlName="mortgageTerm"
+                                                [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}" />
+                                            <span class="input-group-text"
+                                                [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}">years</span>
 
-                                        @if(f['mortgageTerm'].invalid && isFormSubmitted) {
-                                        <div class="invalid-feedback">
-                                            @if(f['mortgageTerm'].errors?.['required']) {
-                                            <span>
-                                                This field is required
-                                            </span>
+                                            @if(f['mortgageTerm'].invalid && isFormSubmitted) {
+                                            <div class="invalid-feedback">
+                                                @if(f['mortgageTerm'].errors?.['required']) {
+                                                <span>
+                                                    This field is required
+                                                </span>
+                                                }
+                                            </div>
                                             }
                                         </div>
-                                        }
                                     </div>
 
                                     <!-- Interest Rate -->
                                     <div class="mb-3">
                                         <label for="interestRate" class="form-label">Interest Rate</label>
-                                        <input id="interestRate" type="number" class="form-control"
-                                            formControlName="interestRate" placeholder="%"
-                                            [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}" />
 
+                                        <div class="input-group">
+                                            <input id="interestRate" type="number" class="form-control"
+                                                formControlName="interestRate"
+                                                [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}" />
+                                            <span class="input-group-text"
+                                                [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}">%</span>
 
-                                        @if(f['interestRate'].invalid && isFormSubmitted) {
-                                        <div class="invalid-feedback">
-                                            @if(f['interestRate'].errors?.['required']) {
-                                            <span>
-                                                This field is required
-                                            </span>
+                                            @if(f['interestRate'].invalid && isFormSubmitted) {
+                                            <div class="invalid-feedback">
+                                                @if(f['interestRate'].errors?.['required']) {
+                                                <span>
+                                                    This field is required
+                                                </span>
+                                                }
+                                            </div>
                                             }
                                         </div>
-                                        }
                                     </div>
 
 
@@ -96,8 +108,9 @@
                                     </div>
 
                                     <!-- Submit -->
-                                    <button type="submit" class="btn btn-primary">
-                                        Calculate Repayments
+                                    <button id="submit-button" type="submit" class="btn">
+                                        <img src="images/icon-calculator.svg" />
+                                        <span>Calculate Repayments</span>
                                     </button>
                                 </form>
 
@@ -106,24 +119,47 @@
 
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div id="results-container" class="col-md-6 col-sm-12">
 
-                            <div id="results">
+                            <div id="results" class="d-flex align-items-center justify-content-center">
                                 @if(monthlyRepayment !== null && totalRepayment !== null){
-                                <h2>Your results</h2>
-                                <div>
-                                    Your monthly repayments:
-                                    <strong>£{{ monthlyRepayment }}</strong>
+
+                                <div id="with-results">
+                                    <h2>Your results</h2>
+                                    <div class="mt-3 description">
+                                        Your results are shown below based on the informations you provided. To adjust
+                                        the results, edit the form and click "Calculate repayments" again
+                                    </div>
+
+                                    <div class="card mt-5">
+                                        <div class="card-body">
+                                            <div class="card-text">
+                                                <div class="description">Your monthly repayments</div>
+                                                <div id="monthy-repayment-value">£ {{ monthlyRepayment }}</div>
+                                            </div>
+
+                                            <div class="card-text">
+                                                <div class="description">Total you'll repay over the term</div>
+                                                <div id="total-repayment-value">£ {{ totalRepayment }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div>
-                                    Total you'll repay over the term:
-                                    <strong>£{{ totalRepayment }}</strong>
-                                </div>
+
                                 }
                                 @else {
 
-                                Results shown here
-
+                                <div id="without-results">
+                                    <img src="/images/illustration-empty.svg" />
+                                    <h2>
+                                        Results shown here
+                                    </h2>
+                                    <div class="mt-3 description">
+                                        Complete the form and click "Calculate repayments" to see what your monthly
+                                        repayments would be
+                                    </div>
+                                </div>
                                 }
                             </div>
 
