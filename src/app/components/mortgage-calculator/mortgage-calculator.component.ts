@@ -13,6 +13,8 @@ export class MortgageCalculatorComponent {
 
     public mortgageForm: FormGroup;
     public isFormSubmitted = false;
+    public monthlyRepayment: number | null = null;
+    public totalRepayment: number | null = null;
 
     constructor(private _mortgageFormService: MortgageFormServiceService) {
         this.mortgageForm = this._mortgageFormService.getForm();
@@ -21,10 +23,19 @@ export class MortgageCalculatorComponent {
     onSubmit() {
         this.isFormSubmitted = true;
 
-        console.log(this.mortgageForm.value)
+        if (this.mortgageForm.valid) {
+            this._calculateMortgage();
+        }
     }
 
     get f() {
         return this.mortgageForm.controls;
+    }
+
+    private _calculateMortgage() {
+        console.log(this.mortgageForm.value);
+
+        this.monthlyRepayment = 600;
+        this.totalRepayment = 118000
     }
 }

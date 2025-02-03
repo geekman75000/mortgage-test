@@ -1,49 +1,105 @@
-<form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()" novalidate>
-    <!-- Mortgage Amount -->
-    <div class="mb-3">
-        <label for="mortgageAmount" class="form-label">Mortgage Amount</label>
-        <input id="mortgageAmount" type="number" class="form-control" formControlName="mortgageAmount" placeholder="£"
-            [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}" />
-    </div>
+<div class="container">
+    <div class="row d-flex align-items-center justify-content-center vh-100">
 
-    <!-- Mortgage Term -->
-    <div class="mb-3">
-        <label for="mortgageTerm" class="form-label">
-            Mortgage Term
-        </label>
-        <input id="mortgageTerm" type="number" class="form-control" formControlName="mortgageTerm" placeholder="années"
-            [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}" />
-    </div>
+        <div class="col-12">
 
-    <!-- Interest Rate -->
-    <div class="mb-3">
-        <label for="interestRate" class="form-label">Interest Rate</label>
-        <input id="interestRate" type="number" class="form-control" formControlName="interestRate" placeholder="%"
-            [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}" />
-    </div>
+            <div id="mortgage-calculator-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
 
-    
-    <!-- Mortgage Type -->
-    <div class="mb-3">
-        <label class="form-label">Mortgage Type</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" id="repaymentRadio" formControlName="mortgageType"
-                value="Repayment" [checked]="f['mortgageType'].value === 'Repayment'" />
-            <label class="form-check-label" for="repaymentRadio">
-                Repayment
-            </label>
+                            <div id="form-container">
+                                <h1 class="mb-4">Mortgage Calculator</h1>
+
+
+
+                                <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()" novalidate>
+                                    <!-- Mortgage Amount -->
+                                    <div class="mb-3">
+                                        <label for="mortgageAmount" class="form-label">Mortgage Amount</label>
+                                        <input id="mortgageAmount" type="number" class="form-control"
+                                            formControlName="mortgageAmount" placeholder="£"
+                                            [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}" />
+                                    </div>
+
+                                    <!-- Mortgage Term -->
+                                    <div class="mb-3">
+                                        <label for="mortgageTerm" class="form-label">
+                                            Mortgage Term
+                                        </label>
+                                        <input id="mortgageTerm" type="number" class="form-control"
+                                            formControlName="mortgageTerm" placeholder="années"
+                                            [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}" />
+                                    </div>
+
+                                    <!-- Interest Rate -->
+                                    <div class="mb-3">
+                                        <label for="interestRate" class="form-label">Interest Rate</label>
+                                        <input id="interestRate" type="number" class="form-control"
+                                            formControlName="interestRate" placeholder="%"
+                                            [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}" />
+                                    </div>
+
+
+                                    <!-- Mortgage Type -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Mortgage Type</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="repaymentRadio"
+                                                formControlName="mortgageType" value="Repayment"
+                                                [checked]="f['mortgageType'].value === 'Repayment'" />
+                                            <label class="form-check-label" for="repaymentRadio">
+                                                Repayment
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="interestOnlyRadio"
+                                                formControlName="mortgageType" value="Interest Only"
+                                                [checked]="f['mortgageType'].value === 'Interest Only'" />
+                                            <label class="form-check-label" for="interestOnlyRadio">
+                                                Interest Only
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit -->
+                                    <button type="submit" class="btn btn-primary">
+                                        Calculate Repayments
+                                    </button>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+
+                            <div id="results">
+                                @if(monthlyRepayment !== null && totalRepayment !== null){
+                                <h2>Your results</h2>
+                                <div>
+                                    Your monthly repayments:
+                                    <strong>£{{ monthlyRepayment }}</strong>
+                                </div>
+                                <div>
+                                    Total you'll repay over the term:
+                                    <strong>£{{ totalRepayment }}</strong>
+                                </div>
+                                }
+                                @else {
+
+                                Results shown here
+
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" id="interestOnlyRadio" formControlName="mortgageType"
-                value="Interest Only" [checked]="f['mortgageType'].value === 'Interest Only'" />
-            <label class="form-check-label" for="interestOnlyRadio">
-                Interest Only
-            </label>
-        </div>
     </div>
-
-    <!-- Submit -->
-    <button type="submit" class="btn btn-primary">
-        Calculate Repayments
-    </button>
-</form>
+</div>
