@@ -20,6 +20,17 @@
                                         <input id="mortgageAmount" type="number" class="form-control"
                                             formControlName="mortgageAmount" placeholder="£"
                                             [ngClass]="{'is-invalid': f['mortgageAmount'].invalid && isFormSubmitted}" />
+
+
+                                        @if(f['mortgageAmount'].invalid && isFormSubmitted) {
+                                        <div class="invalid-feedback">
+                                            @if(f['mortgageAmount'].errors?.['required']) {
+                                            <span>
+                                                This field is required
+                                            </span>
+                                            }
+                                        </div>
+                                        }
                                     </div>
 
                                     <!-- Mortgage Term -->
@@ -30,6 +41,17 @@
                                         <input id="mortgageTerm" type="number" class="form-control"
                                             formControlName="mortgageTerm" placeholder="années"
                                             [ngClass]="{'is-invalid': f['mortgageTerm'].invalid && isFormSubmitted}" />
+
+
+                                        @if(f['mortgageTerm'].invalid && isFormSubmitted) {
+                                        <div class="invalid-feedback">
+                                            @if(f['mortgageTerm'].errors?.['required']) {
+                                            <span>
+                                                This field is required
+                                            </span>
+                                            }
+                                        </div>
+                                        }
                                     </div>
 
                                     <!-- Interest Rate -->
@@ -38,6 +60,17 @@
                                         <input id="interestRate" type="number" class="form-control"
                                             formControlName="interestRate" placeholder="%"
                                             [ngClass]="{'is-invalid': f['interestRate'].invalid && isFormSubmitted}" />
+
+
+                                        @if(f['interestRate'].invalid && isFormSubmitted) {
+                                        <div class="invalid-feedback">
+                                            @if(f['interestRate'].errors?.['required']) {
+                                            <span>
+                                                This field is required
+                                            </span>
+                                            }
+                                        </div>
+                                        }
                                     </div>
 
 
